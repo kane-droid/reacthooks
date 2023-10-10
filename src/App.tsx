@@ -19,7 +19,7 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         {/*create an on click event to increase the count each time button is clicked*/}
-        <button>
+        <button onClick={()=>{setCount(count+1)}}>
           count is {count}
         </button>
         <p>
