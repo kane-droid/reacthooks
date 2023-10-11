@@ -1,10 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {useCallback, useMemo, useState} from 'react'
 import './App.css'
+import MinusButton from "./MinusButton";
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const squareCount = useMemo(()=>{
+    return count * count
+  },[count]);
+
+  const decrement = useCallback(() =>{
+    setCount(count -1)
+  },[count])
 
   return (
     <>
@@ -18,10 +25,14 @@ function App() {
       </div>
       <h1>Army + Software</h1>
       <div className="card">
-        {/*create an on click event to increase the count each time button is clicked*/}
-        <button>
+        <button onClick={()=>{setCount(count +1)}}>
           count is {count}
+          <br/>
+          squared count is {squareCount}
         </button>
+        <br/>
+        <br/>
+        <MinusButton count={count} decrement={decrement} squareCount={squareCount}></MinusButton>
       </div>
     </>
   )
