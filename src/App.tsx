@@ -1,34 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import {useEffect, useState} from 'react'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const [catImage, setCatImage] = useState('');
+  useEffect(() => {
+    fetch('https://api.thecatapi.com/v1/images/search')
+      .then(response => response.json())
+      .then(data => setCatImage(data[0].url))
+  }, []);
+
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <img src={'ASWF-logo.svg'} alt={'swf logo'}/>
       </div>
-      <h1>Vite + React</h1>
+      <div>
+        <h1>Random Cat Picture</h1>
+        {catImage && <img src={catImage} alt="Random cat"/>}
+      </div>
       <div className="card">
-        {/*create an on click event to increase the count each time button is clicked*/}
-        <button>
+        <button onClick={()=>{setCount(count +1)}}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
