@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
@@ -18,10 +18,7 @@ function App() {
       </div>
       <h1>Army + Software</h1>
       <div className="card">
-        {/*create an on click event to increase the count each time button is clicked*/}
-        <button>
-          count is {count}
-        </button>
+
       </div>
     </>
   )
