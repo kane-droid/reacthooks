@@ -1,9 +1,14 @@
+import {useCounter} from "./CounterContext";
+
+
+
 const AddCounter = () => {
 
+  const {count,increment} = useCounter()
   return (
-    <>
-      add to count, count is
-    </>
+    <button onClick={increment}>
+      add to count, count is {count}
+    </button>
   );
 };
 

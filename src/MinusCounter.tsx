@@ -1,14 +1,14 @@
-
+import {useCounter} from "./CounterContext";
 
 
 
 const MinusCounter = () => {
 
-
+  const {count,decrement} = useCounter()
   return (
-    <>
-      subtract from count, count is
-    </>
+    <button onClick={decrement}>
+      subtract from count, count is {count}
+    </button>
   );
 };
 
